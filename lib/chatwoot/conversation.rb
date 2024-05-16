@@ -7,6 +7,12 @@ module Chatwoot
         response["payload"]
       end
 
+      def list_by_contact(contact_id)
+        raise "contact_id is missing" unless contact_id
+        response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/contacts/#{contact_id}/conversations")
+        response["payload"]
+      end
+
       # Create a new conversation
       def create(params = {})
         required_params = [:source_id, :inbox_id, :contact_id, :status]
