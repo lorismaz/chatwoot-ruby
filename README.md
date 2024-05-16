@@ -56,7 +56,7 @@ API doc: https://www.chatwoot.com/developers/api/#operation/contactCreate
 ```ruby
 # the following params below are mandatory according to the API doc
 
-params = {
+params_contact = {
   "inbox_id": 0,
   "name": "string",
   "email": "string",
@@ -64,10 +64,48 @@ params = {
   "identifier": "string",
   "custom_attributes": { } 
 }
-contact = Chatwoot::Contact.create(params)
+contact = Chatwoot::Contact.create(params_contact)
 ```
 
 ---
+
+### Create a conversation
+Creates a conversation in chatwoot
+
+API doc: https://www.chatwoot.com/developers/api/#tag/Conversations/operation/newConversation
+
+```ruby
+# source_id and inbox_id are mandatory according to the API doc
+
+params_conversation = {
+  source_id: 'string',
+  inbox_id: 'string',
+  contact_id: 'string',
+  status: 'string'
+}
+conversation = Chatwoot::Conversation.create(params_conversation)
+```
+
+---
+
+### Create a message
+Creates a message in chatwoot
+
+API doc: https://www.chatwoot.com/developers/api/#tag/Messages/operation/create-a-new-message-in-a-conversation
+
+```ruby
+# account_id and content are mandatory according to the API doc
+
+params_message = {
+  account_id: 5,
+  content: "hello simple visa team",
+  message_type: "outgoing"
+}
+message = Chatwoot::Conversation.create(conversation_id, params_message)
+```
+
+---
+
 
 ## Copyright
 Copyright (c) 2021 [lorismaz](https://github.com/lorismaz)
