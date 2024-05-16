@@ -3,6 +3,8 @@
 require "rest-client"
 require "json"
 require "chatwoot/contact"
+require "chatwoot/conversation"
+require "chatwoot/message"
 
 module Chatwoot
   class ChatwootError < StandardError

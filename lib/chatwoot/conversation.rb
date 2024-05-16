@@ -1,0 +1,39 @@
+module Chatwoot
+  class Conversation
+    class << self
+      # List all conversations
+      def list
+        response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/conversations")
+        response["payload"]
+      end
+
+      # Create a new conversation
+      def create(params = {})
+        required_params = [:source_id, :inbox_id, :contact_id, :status]
+        required_params.each do |param|
+          raise "#{param} is missing" unless params[param]
+        end
+        Chatwoot.request(:post, "api/v1/accounts/#{Chatwoot.account_id}/conversations", params)
+      end
+
+      # Update an existing conversation
+      def update(conversation_id, params = {})
+        raise "conversation_id is missing" unless conversation_id
+        Chatwoot.request(:put, "api/v1/accounts/#{Chatwoot.account_id}/conversations/#{conversation_id}", params)
+      end
+
+      # Get details of a specific conversation
+      def details(conversation_id)
+        raise "conversation_id is missing" unless conversation_id
+        response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/conversations/#{conversation_id}")
+        response["payload"]
+      end
+
+      # Delete a specific conversation
+      def delete(conversation_id)
+        raise "conversation_id is missing" unless conversation_id
+        Chatwoot.request(:delete, "api/v1/accounts/#{Chatwoot.account_id}/conversations/#{conversation_id}")
+      end
+    end
+  end
+end
