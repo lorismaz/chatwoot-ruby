@@ -31,8 +31,8 @@ module Chatwoot
       # Get details of a specific conversation
       def details(conversation_id)
         raise "conversation_id is missing" unless conversation_id
-        response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/conversations/#{conversation_id}")
-        response["payload"]
+        response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/conversations/#{conversation_id}/messages")
+        response
       end
 
       # Delete a specific conversation
