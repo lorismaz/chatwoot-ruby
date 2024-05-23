@@ -15,7 +15,7 @@ module Chatwoot
 
       # Create a new conversation
       def create(params = {})
-        required_params = [:source_id, :inbox_id, :contact_id, :status]
+        required_params = [:source_id, :inbox_id]
         required_params.each do |param|
           raise "#{param} is missing" unless params[param]
         end
