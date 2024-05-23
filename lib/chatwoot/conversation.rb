@@ -22,6 +22,11 @@ module Chatwoot
         Chatwoot.request(:post, "api/v1/accounts/#{Chatwoot.account_id}/conversations", params)
       end
 
+      # Create a new conversation, custom_attributes later
+      def create_by_contact(contact_id, params = {})
+        Chatwoot.request(:post, "api/v1/accounts/13/contacts/#{contact_id}/conversations", params)
+      end
+
       # Update an existing conversation
       def update(conversation_id, params = {})
         raise "conversation_id is missing" unless conversation_id
