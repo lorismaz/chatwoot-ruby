@@ -4,7 +4,7 @@ module Chatwoot
       # List all conversations
       def list
         response = Chatwoot.request(:get, "api/v1/accounts/#{Chatwoot.account_id}/conversations")
-        response["payload"]
+        response
       end
 
       def list_by_contact(contact_id)
